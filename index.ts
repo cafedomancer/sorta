@@ -51,7 +51,12 @@ const getTextChannels = (cateogry: CategoryChannel): TextChannel[] => {
     cateogry.children
       .filter((channel) => isTextChannel(channel))
       .map((channel) => channel as TextChannel),
-    [(channel) => channel.name.replace(/\p{Emoji_Presentation}/gu, '')]
+    [
+      (channel) =>
+        channel.name
+          .replace(/\p{Emoji_Presentation}/gu, '')
+          .replace(/\p{Punctuation}/gu, '')
+    ]
   )
 }
 
